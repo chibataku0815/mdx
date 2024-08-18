@@ -4,6 +4,7 @@ import honox from 'honox/vite'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import { defineConfig } from 'vite'
+import path from 'node:path';
 
 const entry = './app/server.ts'
 
@@ -29,5 +30,10 @@ export default defineConfig(() => {
         remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
       }),
     ],
+    resolve: {
+      alias: {
+        '~': path.resolve(__dirname, 'app'),
+      },
+    },
   }
 })

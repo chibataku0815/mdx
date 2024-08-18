@@ -1,8 +1,9 @@
 import { jsxRenderer } from "hono/jsx-renderer";
+import { Badge } from "../components/Badge/badge";
 
 export default jsxRenderer(({ children, title, frontmatter }) => {
 	return (
-		<html lang="en">
+		<html lang="ja">
 			<head>
 				<meta charset="UTF-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,8 +19,9 @@ export default jsxRenderer(({ children, title, frontmatter }) => {
 					<h1>
 						<a href="/">My Blog</a>
 					</h1>
+					<Badge>test</Badge>
 				</header>
-				<main>
+				<main class="prose">
 					<article>{children}</article>
 				</main>
 				<footer>
