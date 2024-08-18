@@ -1,39 +1,44 @@
-import ssg from '@hono/vite-ssg'
-import mdx from '@mdx-js/rollup'
-import honox from 'honox/vite'
-import remarkFrontmatter from 'remark-frontmatter'
-import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
-import { defineConfig } from 'vite'
-import path from 'node:path';
+import ssg from "@hono/vite-ssg";
+import mdx from "@mdx-js/rollup";
+import honox from "honox/vite";
+import client from "honox/vite/client";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import { defineConfig } from "vite";
+import path from "node:path";
 
-const entry = './app/server.ts'
+const entry = "./app/server.ts";
 
-export default defineConfig(() => {
-  if (process.env.MODE === 'client') {
+export default defineConfig(({ mode }) => {
+  if (mode === "client") {
     return {
+      plugins: [client()],
       build: {
         rollupOptions: {
-          input: ['/app/style.css'],
+          input: ["/app/style.css"],
           output: {
-            assetFileNames: 'static/assets/[name].[ext]',
+            assetFileNames: "static/assets/[name].[ext]",
           },
         },
       },
-    }
+    };
   }
   return {
+    build: {
+      emptyOutDir: false,
+    },
     plugins: [
       honox(),
-      ssg({ entry }),
       mdx({
-        jsxImportSource: 'hono/jsx',
+        jsxImportSource: "hono/jsx",
         remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
       }),
+      ssg({ entry }),
     ],
     resolve: {
       alias: {
         '~': path.resolve(__dirname, 'app'),
       },
     },
-  }
-})
+  };
+});
