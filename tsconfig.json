@@ -13,8 +13,7 @@
     "jsxImportSource": "hono/jsx",
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"],
-      "~/lib/*": ["./app/lib/*"]
+      "@/*": ["./app/*"],
     },
   },
 }

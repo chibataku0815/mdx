@@ -35,9 +35,6 @@ export default defineConfig(({ mode }) => {
   return {
     ...common,
     ssr: { external: ["react", "react-dom"] },
-    build: {
-      emptyOutDir: false,
-    },
     plugins: [
       honox(),
       mdx({
@@ -46,10 +43,5 @@ export default defineConfig(({ mode }) => {
       }),
       ssg({ entry }),
     ],
-    resolve: {
-      alias: {
-        '~': path.resolve(__dirname, 'app'),
-      },
-    },
   };
 });

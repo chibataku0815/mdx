@@ -13,6 +13,7 @@
     "@hono/vite-ssg": "^0.1.0",
     "@mdx-js/rollup": "^3.0.0",
     "@tailwindcss/typography": "^0.5.14",
+    "@types/node": "^22.4.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.41",
     "remark-frontmatter": "^5.0.0",
@@ -25,8 +26,11 @@
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
+    "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "hono": "^4.5.6",
-    "honox": "^0.1.24"
+    "honox": "^0.1.24",
+    "lucide-react": "^0.428.0"
   }
 }

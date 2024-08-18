@@ -13,7 +13,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 import type { DOMAttributes } from "hono/jsx";
-import { cn } from "~/lib/utils";
+import { cn } from "@/lib/utils";
 
 /**
  * `badgeVariants` defines the different styles and variants for the Badge component.
