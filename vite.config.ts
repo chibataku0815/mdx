@@ -10,8 +10,17 @@ import path from "node:path";
 const entry = "./app/server.ts";
 
 export default defineConfig(({ mode }) => {
+  const common = {
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./app"),
+      },
+    },
+  };
+
   if (mode === "client") {
     return {
+      ...common,
       plugins: [client()],
       build: {
         rollupOptions: {
@@ -24,6 +33,8 @@ export default defineConfig(({ mode }) => {
     };
   }
   return {
+    ...common,
+    ssr: { external: ["react", "react-dom"] },
     build: {
       emptyOutDir: false,
     },
